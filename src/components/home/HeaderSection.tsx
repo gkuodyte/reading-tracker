@@ -27,7 +27,7 @@ export function HeaderSection() {
           Reading is my favorite drug.
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-          I've been scouring the web for ways to expand my consciousness and I can't get enough of.
+          I've been scouring the web for ways to expand my awareness and I can't get enough.
         </div>
         <button onClick={scrollToHero} className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
           See recent
