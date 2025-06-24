@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   const navLinks = [
@@ -16,8 +18,34 @@ export default function Navbar() {
     { href: '/about', label: 'About Me' },
   ];
 
+   useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY <= 0) {
+        // always show at the top
+        setVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        // scroll down → hide
+        setVisible(false);
+      } else {
+        // scroll up → show
+        setVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md px-6 py-4">
+    <header
+      className={cn(
+        'fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md px-6 py-4',
+        'transition-transform duration-300',
+        visible ? 'translate-y-0' : '-translate-y-full'
+      )}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-8">
           {/* Logo */}

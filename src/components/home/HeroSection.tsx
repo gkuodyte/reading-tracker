@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import MasonryPage from "../MasonryGrid";
+import MasonryPage from "./MasonryGrid";
 import TestimonialImg01 from "../../../public/masonry-01.jpg";
 import TestimonialImg02 from "../../../public/masonry-02.jpg";
 import TestimonialImg03 from "../../../public/masonry-03.jpg";
@@ -12,9 +12,7 @@ import TestimonialImg07 from "../../../public/masonry-07.jpg";
 import TestimonialImg08 from "../../../public/masonry-08.jpg";
 import TestimonialImg09 from "../../../public/masonry-09.jpg";
 
-
-export function HeroSection() {
-const testimonials = [
+export const testimonials = [
   {
     img: TestimonialImg01,
     name: "Peter Lowe",
@@ -97,6 +95,10 @@ const testimonials = [
     channel: "Twitter",
   },
 ];
+
+
+export function HeroSection() {
+
 
     return (
       <div id="hero-section" className="relative flex min-h-screen flex-col justify-start overflow-hidden bg-slate-50">

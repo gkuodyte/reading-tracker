@@ -1,7 +1,7 @@
 "use client";
 
 import useMasonry from "@/hooks/useMasonry";
-import Article from "@/components/Article";
+import Article from "@/components/home/Article";
 import { Article as ArticleType} from "@/lib/types";
 
 interface MasonryProps {

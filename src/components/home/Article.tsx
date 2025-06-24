@@ -7,11 +7,7 @@ import {
 } from '@/components/ui/card';
 import { Article as ArticleType } from "@/lib/types";
 
-interface ArticleProps {
-    article: ArticleType
-};
-
-export default function Article( { article }: ArticleProps ) {
+export default function Article( { article }: { article: ArticleType } ) {
    return (
     <Card
       className={`
